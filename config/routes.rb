@@ -1,8 +1,13 @@
 Hackathon::Application.routes.draw do
+  
   resources :posts
-
-
   resources :player_mlbs
+
+  get 'posts/:id/upvote' => 'posts#upvote'
+  get 'posts/:id/downvote' => 'posts#downvote'
+
+  root :to => 'posts#index'
+
 
 
   # The priority is based upon order of creation:

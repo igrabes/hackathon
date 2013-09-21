@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.sort_by {|post| post.score}.reverse
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +79,19 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    @post.score = @post.try(:score) == nil ? 0 : @post.score.try(:+, 1)
+    @post.save!
+    redirect_to posts_url
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.score = @post.try(:score) == nil ? 0 - 1 : @post.score.try(:-, 1)
+    @post.save!
+    redirect_to posts_url
   end
 end
