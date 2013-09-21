@@ -19,6 +19,8 @@
   </div>
 <% end %>
 
+<div class="sideform">
+
 <%= form_tag new_post_path, :method => :get  do %>
   <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
 
@@ -40,3 +42,5 @@
 <% end %>
 
 <%= render :template  => "searches/data_tables" %>
+
+</div>

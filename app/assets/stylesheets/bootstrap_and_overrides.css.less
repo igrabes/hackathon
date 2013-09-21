@@ -36,7 +36,8 @@ textarea { resize:both; }
 
 @colorGreen: #6bc700;
 @colorYellow: #7b6114;
-@border: @colorGreen 1px solid;
+@colorPale: #f6f6f6;
+@border: @colorGreen 2px solid;
 
 
 #logo {
@@ -47,10 +48,11 @@ textarea { resize:both; }
 
 .navbar-inner{
 	border-bottom: @border;
+	position: relative;
 
 	ul.nav{
 		display: block;
-		float: left;
+		float: right;
 
 		li{
 			display: block;
@@ -60,7 +62,29 @@ textarea { resize:both; }
 		}
 
 		a{
-			font-family: "fontNormal", verdana, arial, helvetica, sans-serif;
+			font: 14px/0.8em "fontNormal", verdana, arial, helvetica, sans-serif;
 		}
 	}
+}
+
+div.new-post{
+	width: 570px;
+	float: left;
+	padding: 0;
+	margin: 0;
+
+	textarea{
+		width: 100%;
+	}
+}
+
+div.form-actions{
+	background: transparent;
+	border: 0px none;
+}
+
+div.sideform{
+	width: 370px;
+	float: right;
+	background: @colorPale;
 }

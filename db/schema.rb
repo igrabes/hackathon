@@ -89,6 +89,17 @@ ActiveRecord::Schema.define(:version => 20130921174731) do
     t.integer  "play"
     t.integer  "finish"
     t.integer  "complete"
+    t.decimal  "ip_1"
+    t.decimal  "ip_2"
+    t.integer  "bf"
+    t.decimal  "era"
+    t.decimal  "k9"
+    t.decimal  "whip"
+    t.integer  "win"
+    t.integer  "loss"
+    t.integer  "save"
+    t.integer  "qstart"
+    t.integer  "shutout"
   end
 
   create_table "player_mlbs", :force => true do |t|
