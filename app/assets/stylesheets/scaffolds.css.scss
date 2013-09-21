@@ -66,3 +66,23 @@ div {
     list-style: square;
   }
 }
+.arrows{
+  display: block;
+  float: right;
+
+  div a, div a:hover{
+    text-decoration: none;
+  }
+
+  .up{
+    background: url(assets/images/uparrow.png) no-repeat;
+    top: 0;
+    right: 0;
+  }
+
+  .down{
+    background: url(assets/images/downarrow.png) no-repeat;
+    bottom: 0;
+    right: 0;
+  }
+}

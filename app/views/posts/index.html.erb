@@ -12,8 +12,10 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.score %>
-            <%= link_to "⬆", controller: "posts", action: "upvote", id: post.id %> 
-            <%= link_to "⬇", controller: "posts", action: "downvote", id: post.id %></td>
+          <div class="arrows">
+            <div class="up"><%= link_to "⬆", controller: "posts", action: "upvote", id: post.id %></div> 
+            <div class="down"><%= link_to "⬇", controller: "posts", action: "downvote", id: post.id %></div>
+          </div></td>
         <td><%= link_to post.title, controller: "posts", action: "show", id: post.id %> </td>
         <td><%= post.score %> </td>
       </tr>
