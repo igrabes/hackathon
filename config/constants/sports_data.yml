@@ -1,0 +1,9 @@
+development: &defaults
+  :mlb_key: "8gz4vfrja2h6gx9g4qq3n74k"
+  :nfl_key: "44bfapvdt29h7hkya4euegtp"
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

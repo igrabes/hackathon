@@ -1,0 +1,17 @@
+<%= form_for(@player_mlb) do |f| %>
+  <% if @player_mlb.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player_mlb.errors.count, "error") %> prohibited this player_mlb from being saved:</h2>
+
+      <ul>
+      <% @player_mlb.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

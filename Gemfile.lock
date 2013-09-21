@@ -1,3 +1,11 @@
+GIT
+  remote: https://BlaneCordes:Mets2012@github.com/BlaneCordes/sports_data_api.git
+  revision: 787d28bcd306f1d638624444fc2b2c93e6fb1bab
+  specs:
+    sports_data_api (0.0.4)
+      nokogiri (~> 1.5.5)
+      rest-client (~> 1.6.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,6 +59,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     multi_json (1.8.0)
+    nokogiri (1.5.10)
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -78,6 +87,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -108,5 +119,6 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
+  sports_data_api!
   sqlite3
   uglifier (>= 1.0.3)

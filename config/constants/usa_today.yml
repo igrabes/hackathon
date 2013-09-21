@@ -1,0 +1,8 @@
+development: &defaults
+  :salaries_key: "5723uqbcdrfn5rt5v8hsmjyc"
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
