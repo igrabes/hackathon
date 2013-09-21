@@ -1,0 +1,2 @@
+module SearchescHelper
+end
