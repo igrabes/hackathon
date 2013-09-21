@@ -1,4 +1,7 @@
 Hackathon::Application.routes.draw do
+  resources :posts
+
+
   resources :player_mlbs
 
 
