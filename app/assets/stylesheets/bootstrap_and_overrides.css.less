@@ -36,10 +36,31 @@ textarea { resize:both; }
 
 @colorGreen: #6bc700;
 @colorYellow: #7b6114;
+@border: @colorGreen 1px solid;
 
 
 #logo {
   line-height: 100px;
   float: left;
   hover: none;
+}
+
+.navbar-inner{
+	border-bottom: @border;
+
+	ul.nav{
+		display: block;
+		float: left;
+
+		li{
+			display: block;
+			float: left;
+			border: @border;
+			border-bottom: 0px none;
+		}
+
+		a{
+			font-family: "fontNormal", verdana, arial, helvetica, sans-serif;
+		}
+	}
 }

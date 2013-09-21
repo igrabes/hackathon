@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+@include font-face("fontNormal", font-files("fonts/jura-normal-webfont.ttf, fonts/jura-normal-webfont.eot"));
+@include font-face("fontMedium", font-files("fonts/jura-medium-webfont.ttf, fonts/jura-medium-webfont.eot"));
+@include font-face("fontBold", font-files("fonts/jura-demibold-webfont.ttf, fonts/jura-demibold-webfont.eot"));
+@include font-face("fontLight", font-files("fonts/jura-light-webfont.ttf, fonts/jura-light-webfont.eot"));

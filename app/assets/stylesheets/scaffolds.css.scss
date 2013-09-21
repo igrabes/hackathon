@@ -1,13 +1,13 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "fontNormal", verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "fontNormal", verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -72,16 +72,20 @@ div {
 
   div a, div a:hover{
     text-decoration: none;
+    text-indent: 30px;
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
   }
 
   .up{
-    background: url(assets/images/uparrow.png) no-repeat;
+    background: url(uparrow.png) center top no-repeat;
     top: 0;
     right: 0;
   }
 
   .down{
-    background: url(assets/images/downarrow.png) no-repeat;
+    background: url(downarrow.png) center top no-repeat;
     bottom: 0;
     right: 0;
   }
