@@ -9,42 +9,41 @@
     <div class="controls">
       <%= f.text_area :body, :class => 'text_area', :placeholder => "Post Body" %>
     </div>
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    posts_path, :class => 'btn' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
-  </div>
-<% end %>
 </div>
 
 <div class="sideform span4">
+      <%= form_tag new_post_path, :method => :get  do %>
+        <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
 
-<%= form_tag new_post_path, :method => :get  do %>
-  <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
+        <% PlayerMlb.new.attributes.keys.map(&:to_sym).each do |player_attribute| %>
+          <% if MLB_MAPPING[player_attribute].present? %>
+          <br><%= MLB_MAPPING[player_attribute] %>  <%= check_box "search", player_attribute %> 
+          <% end %>
+        <% end %><br> <br>
 
-<ul>
-  <li><%= check_box  "search", :avg %>Batting Average</li>
-  <li><%= check_box  "search", :hr %>HomeRuns</li>
-  <li><%= check_box  "search", :rbi %>RBI</li>
-  <li><%= check_box  "search", :slg %>Slugging Percentage</li>
-</ul>
 
-  Sort By:
-<ul>
-  <li><%= check_box  "search_sort", :avg %>Batting Average</li>
-  <li><%= check_box  "search_sort", :hr %>HomeRuns</li>
-  <li><%= check_box  "search_sort", :rbi %>RBI</li>
-  <li><%= check_box  "search_sort", :slg %>Slugging Percentage</li>
-</ul>
+       Sort By:
+        Batting Average<%= check_box  "search_sort", :avg %>
+        HomeRuns<%= check_box  "search_sort", :hr %>
+        RBI<%= check_box  "search_sort", :rbi %>
+        Slugging Percentage<%= check_box  "search_sort", :slg %> <br>
 
-  Sort Direction:
-  <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %>
+        <br>
+        Sort Direction:
+        <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %>
 
-  <%= submit_tag "Search", :class => 'btn' %>
-<% end %>
+        <br>
+        <%= submit_tag "Search" %>
+      <% end %>
 
-<%= render :template  => "searches/data_tables" %>
-
+      <%= render :template  => "searches/data_tables" %>
 </div>
+
+
