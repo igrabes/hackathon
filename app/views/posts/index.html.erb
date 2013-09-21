@@ -1,12 +1,11 @@
 <%- model_class = Post -%>
-<div class="page-header">
-  <h1>The Couch Commentator</h1>
-</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Comment!</th>
+      <th>Score</th>
       <th>Peoples Opinions</th>
+      <th>Commenter</th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +14,8 @@
         <td><%= post.score %>
             <%= link_to "⬆", controller: "posts", action: "upvote", id: post.id %> 
             <%= link_to "⬇", controller: "posts", action: "downvote", id: post.id %></td>
-        <td><%= post.title %> </td>
+        <td><%= link_to post.title, controller: "posts", action: "show", id: post.id %> </td>
+        <td><%= post.score %> </td>
       </tr>
     <% end %>
   </tbody>
