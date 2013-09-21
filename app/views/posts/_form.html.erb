@@ -24,7 +24,7 @@
 
         <% PlayerMlb.new.attributes.keys.map(&:to_sym).each do |player_attribute| %>
           <% if MLB_MAPPING[player_attribute].present? %>
-          <br><%= MLB_MAPPING[player_attribute] %>  <%= check_box "search", player_attribute %> 
+          <br> <%= check_box "search", player_attribute %> <%= MLB_MAPPING[player_attribute] %>
           <% end %>
         <% end %><br> <br>
 
