@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
     if params[:search]
       @query_response = Search.query(params)
-      @query_keys = @query_response.first.attributes.collect { |k,v| k }
+      @query_keys = @query_response.first.attributes.collect { |player_attribute,player_value| player_attribute }
     end
 
     respond_to do |format|

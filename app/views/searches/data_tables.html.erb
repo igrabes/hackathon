@@ -1,5 +1,10 @@
 <% if @query_response %>
   <table class="table">
+    <thead>
+      <% @query_keys.each do |qk| %>
+        <th><%= qk %></th>
+      <% end %>
+    </thead>
     <% @query_response.each do |qr| %>
       <tr>
         <% @query_keys.each do |k| %>
