@@ -18,3 +18,17 @@
                 posts_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<%= form_tag new_post_path, :method => :get  do %>
+  <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
+
+  Batting Average<%= check_box  "search", :avg %>
+  HomeRuns<%= check_box  "search", :hr %>
+  RBI<%= check_box  "search", :rbi %>
+  Slugging Percentage<%= check_box  "search", :slg %>
+
+
+  <%= submit_tag "Search" %>
+<% end %>
+
+<%= render :template  => "searches/data_tables" %>

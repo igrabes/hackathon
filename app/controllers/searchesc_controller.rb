@@ -1,0 +1,2 @@
+class SearchescController < ApplicationController
+end
