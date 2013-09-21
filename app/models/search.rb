@@ -4,7 +4,8 @@ class Search < ActiveRecord::Base
     search_terms = []
     sort_by = []
 
-    sort_direction = params[:sort_direction].to_i === 1 ? "DESC" : "ASC"
+    sort_direction = params[:sort_direction].to_i == 2 ? "DESC" : "ASC"
+
     search_terms.push(:first_name, :last_name)
     search_terms = search_terms.push(params[:search].collect {|k,v| k if v.to_i == 1}.compact!)
 
