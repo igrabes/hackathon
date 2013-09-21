@@ -27,6 +27,14 @@
   RBI<%= check_box  "search", :rbi %>
   Slugging Percentage<%= check_box  "search", :slg %>
 
+  Sort By:
+  Batting Average<%= check_box  "search_sort", :avg %>
+  HomeRuns<%= check_box  "search_sort", :hr %>
+  RBI<%= check_box  "search_sort", :rbi %>
+  Slugging Percentage<%= check_box  "search_sort", :slg %>
+
+  Sort Direction:
+  <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %>
 
   <%= submit_tag "Search" %>
 <% end %>
