@@ -11,12 +11,15 @@ class Search < ActiveRecord::Base
 
     search_terms.delete("save_table")
 
-    sort_by = sort_by.push(params[:search_sort].collect {|k,v| k if v.to_i == 1}.compact!).flatten!
+    # sort_by = sort_by.push(params[:search_sort].collect {|k,v| k if v.to_i == 1}.compact!).flatten!
 
-    sort_by_query = "#{sort_by[0]} #{sort_direction}"
+    debugger
+    search_sort = params[:search_sort]
+    sort_by_query = "#{search_sort} #{sort_direction}"
 
     search_terms.flatten!
-    @query_response = PlayerMlb.where("#{sort_by[0]} is not null").find(:all, :select =>  search_terms, :limit => 100, :order => sort_by_query)
+    debugger
+    @query_response = PlayerMlb.where("#{search_sort} is not null").find(:all, :select =>  search_terms, :limit => 100, :order => sort_by_query)
 
   end
 end
