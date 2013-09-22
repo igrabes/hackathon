@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @player_mlbs.each do |player_mlb| %>
   <tr>
+    <td><%= player_mlb.first_name %></td>
     <td><%= link_to 'Show', player_mlb %></td>
     <td><%= link_to 'Edit', edit_player_mlb_path(player_mlb) %></td>
     <td><%= link_to 'Destroy', player_mlb, method: :delete, data: { confirm: 'Are you sure?' } %></td>

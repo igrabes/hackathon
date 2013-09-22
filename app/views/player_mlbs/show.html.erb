@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @player_mlb.first_name %> <%= @player_mlb.last_name %></h1>
+<h2><%= @player_mlb.birthstate %>, <%= @player_mlb.birthcountry %></h2>
+
+<div class="graphic">
+<%= render 'graphic' %>
+</div>
 
 <%= link_to 'Edit', edit_player_mlb_path(@player_mlb) %> |
 <%= link_to 'Back', player_mlbs_path %>
