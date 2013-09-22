@@ -9,7 +9,8 @@ class Search < ActiveRecord::Base
     search_terms.push(:first_name, :last_name)
     search_terms = search_terms.push(params[:search].collect {|k,v| k if v.to_i == 1}.compact!).flatten!
 
-    search_terms.delete("save_table")
+    raise ArgumentError, "Please Build Your Data Table Before Saving, Thank You" if search_terms == nil
+      search_terms.delete("save_table")
 
     search_sort = params[:search_sort]
     sort_by_query = "#{search_sort} #{sort_direction}"
