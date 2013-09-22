@@ -6,9 +6,7 @@
   <div class="control-group">
       <%= f.text_area :body, :class => 'text_area', :placeholder => "Post Body" %>
       <div class="form-actions">
-        <%= f.submit nil, :class => 'btn btn-primary' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    posts_path, :class => 'btn' %>
+        <%= f.submit nil, :class => 'btn btn-large btn-primary' %>
       </div>
     <% end %>
   </div>
@@ -18,12 +16,15 @@
       <%= form_tag new_post_path, :method => :get  do %>
       Search: <%= submit_tag "Search", :class => "btn btn-large btn-primary" %><br><br>
       League: <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %><br>
-      Sort By: <%= select_tag "Sort Direction", options_for_select([["Highest", 2], ["Lowest", 1]]) %><br>
+      Sort By: <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %><br>
       Choose 1 Category to Filter your Data:<br>
           <li><%= check_box  "search_sort", :avg %>  Batting Average</li>
           <li><%= check_box  "search_sort", :hr %>   HomeRuns</li>
           <li><%= check_box  "search_sort", :rbi %>  RBI</li>
-          <li><%= check_box  "search_sort", :slg %>  Slugging Percentage</li><br><br>
+          <li><%= check_box  "search_sort", :weight %>  Weight</li>
+          <li><%= check_box  "search_sort", :win %>  Wins</li>
+          <li><%= check_box  "search_sort", :ktotal %>   Strikeouts</li>
+          <li><%= check_box  "search_sort", :qstart %>  Quality Starts</li><br><br><br><br>
 
       Select the attributes to be returned:<br>
       <ul class="mlb">
@@ -36,8 +37,6 @@
       <% end %>
     </div>
 
-<table class="table table-striped">
       <%= render :template  => "searches/data_tables" %>
-</table>
 
 
