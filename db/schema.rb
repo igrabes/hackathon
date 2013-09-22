@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130922034323) do
+ActiveRecord::Schema.define(:version => 20130921225230) do
 
   create_table "leagues", :force => true do |t|
     t.string   "name"
@@ -89,6 +89,17 @@ ActiveRecord::Schema.define(:version => 20130922034323) do
     t.integer  "play"
     t.integer  "finish"
     t.integer  "complete"
+    t.decimal  "ip_1"
+    t.decimal  "ip_2"
+    t.integer  "bf"
+    t.decimal  "era"
+    t.decimal  "k9"
+    t.decimal  "whip"
+    t.integer  "win"
+    t.integer  "loss"
+    t.integer  "save"
+    t.integer  "qstart"
+    t.integer  "shutout"
   end
 
   create_table "player_mlbs", :force => true do |t|
@@ -174,6 +185,13 @@ ActiveRecord::Schema.define(:version => 20130922034323) do
     t.integer  "shutout"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "post_data", :force => true do |t|
+    t.text     "table_html"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "posts", :force => true do |t|

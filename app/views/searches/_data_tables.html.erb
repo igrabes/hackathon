@@ -1,0 +1,21 @@
+<% if @query_response %>
+  <table class="table">
+    <thead>
+      <% @query_keys.each do |qk| %>
+        <th><%= qk %></th>
+      <% end %>
+    </thead>
+    <% @query_response.each do |qr| %>
+      <tr>
+        <% @query_keys.each do |k| %>
+          <td><%= qr.send(k) %> </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+
+<% end %>
+
+
+

@@ -7,7 +7,9 @@ class Search < ActiveRecord::Base
     sort_direction = params[:sort_direction].to_i == 2 ? "DESC" : "ASC"
 
     search_terms.push(:first_name, :last_name)
-    search_terms = search_terms.push(params[:search].collect {|k,v| k if v.to_i == 1}.compact!)
+    search_terms = search_terms.push(params[:search].collect {|k,v| k if v.to_i == 1}.compact!).flatten!
+
+    search_terms.delete("save_table")
 
     sort_by = sort_by.push(params[:search_sort].collect {|k,v| k if v.to_i == 1}.compact!).flatten!
 
