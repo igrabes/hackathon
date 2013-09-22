@@ -25,9 +25,7 @@
     <% end %>
 
     <% if params[:search_sort] %>
-      <% params[:search_sort].each do |key,value| %>
-        <%= hidden_field_tag "search_sort[#{key}]",value %>
-      <% end %>
+      <%= hidden_field_tag "search_sort", params[:search_sort] %>
     <% end %>
 
     <%= hidden_field_tag "sort_direction", params[:sort_direction] %>
@@ -42,7 +40,7 @@
     Search: <%= submit_tag "Search", :class => "btn btn-large btn-primary" %><br><br>
     League: <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %><br>
     Sort By: <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %><br>
-    Filter By: <%= select_tag  "Filter", options_for_select(MLB_MAPPING.map {|k,v| [v,k]}) %><br>
+    Filter By: <%= select_tag  :search_sort, options_for_select(MLB_MAPPING.map {|k,v| [v,k]}) %><br>
 
     Select the attributes to be returned:<br>
     <ul class="mlb">
