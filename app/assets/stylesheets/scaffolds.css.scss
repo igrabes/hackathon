@@ -73,19 +73,22 @@ div {
   div a, div a:hover{
     text-decoration: none;
     text-indent: 30px;
+    padding: 0;
     width: 15px;
     height: 15px;
+    max-width: 15px;
+    max-height: 15px;
     overflow: hidden;
   }
 
   .up{
-    background: url(uparrow.png) center top no-repeat;
+    background: transparent url(uparrow.png) center top no-repeat;
     top: 0;
     right: 0;
   }
 
   .down{
-    background: url(downarrow.png) center top no-repeat;
+    background: transparent url(downarrow.png) center top no-repeat;
     bottom: 0;
     right: 0;
   }

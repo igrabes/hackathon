@@ -1,5 +1,5 @@
 @import "twitter/bootstrap/bootstrap";
-body { padding-top: 100px; }
+body { padding-top: 170px; }
 textarea { resize:both; }
 @import "twitter/bootstrap/responsive";
 
@@ -36,31 +36,80 @@ textarea { resize:both; }
 
 @colorGreen: #6bc700;
 @colorYellow: #7b6114;
-@border: @colorGreen 1px solid;
+@colorPale: #f6f6f6;
+@colorBrown: #7b6114;
+@border: @colorGreen 3px solid;
 
 
 #logo {
   line-height: 100px;
   float: left;
-  hover: none;
 }
 
 .navbar-inner{
 	border-bottom: @border;
+	position: relative;
 
 	ul.nav{
 		display: block;
-		float: left;
+		float: right;
+		position: absolute;
+		bottom: -1px;
+		right: 0;
 
 		li{
 			display: block;
-			float: left;
+			float: right;
 			border: @border;
 			border-bottom: 0px none;
+			background: #fff;
 		}
 
 		a{
-			font-family: "fontNormal", verdana, arial, helvetica, sans-serif;
+			font: 14px/0.8em "fontNormal", verdana, arial, helvetica, sans-serif;
+			color: @colorBrown;
 		}
 	}
+}
+
+.control-group, .controls{
+	padding: 0;
+	margin: 0;
+}
+
+div.new-post{
+
+	.control-group{
+		textarea, input{
+			width: 100%;
+		}
+	}
+}
+
+.form-horizontal .control-group:after {
+    clear: none;
+}
+
+div.form-actions{
+	background: transparent;
+	border: 0px none;
+}
+
+div.sideform{
+	padding: 3px 3px 3px 12px;
+	background: @colorPale;
+
+	li{
+		list-style: none;
+		float: left;
+		margin: 0 3px 0 0;
+	}
+
+	ul.mlb li{
+		width: 48%;
+	}
+}
+
+.navbar-inner ul.nav {
+	position:relative;
 }

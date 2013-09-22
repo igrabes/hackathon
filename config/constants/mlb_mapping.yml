@@ -1,10 +1,6 @@
 development: &defaults
-  :id: "ID"
-  :sports_data_id: "Sports Data ID"
   :first_name: "First Name"
-  :preferred_first: "First Name"
   :last_name: "Last Name"
-  :preferred_last: "Last Name"
   :bat_hand: "Bat Hand"
   :throw_hand: "Throw Hand"
   :weight: "Weight"
@@ -80,8 +76,6 @@ development: &defaults
   :saves: "Saves"
   :qstart: "Quality Starts"
   :shutout: "Shutouts"
-  :created_at: "Created At"
-  :updated_at: "Updated At"
 
 test:
   <<: *defaults

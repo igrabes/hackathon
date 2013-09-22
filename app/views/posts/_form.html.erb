@@ -1,42 +1,51 @@
-<%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="new-post span4">
+  <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
+      <%= f.text_field :title, :class => 'text_field', :placeholder => "Title" %>
   </div>
   <div class="control-group">
-    <%= f.label :body, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :body, :class => 'text_area' %>
-    </div>
+      <%= f.text_area :body, :class => 'text_area', :placeholder => "Post Body" %>
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    posts_path, :class => 'btn' %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
-  </div>
-<% end %>
+<div class="sideform span6">
+      <%= form_tag new_post_path, :method => :get  do %>
+        <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
 
-<%= form_tag new_post_path, :method => :get  do %>
-  <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
+      <ul class="mlb">
+          <% PlayerMlb.new.attributes.keys.map(&:to_sym).each do |player_attribute| %>
+          <% if MLB_MAPPING[player_attribute].present? %>
+          <li> <%= check_box "search", player_attribute %> <%= MLB_MAPPING[player_attribute] %></li>
+          <% end %>
+        <% end %>
+      </ul>
+        <br> <br>
 
-  Batting Average<%= check_box  "search", :avg %>
-  HomeRuns<%= check_box  "search", :hr %>
-  RBI<%= check_box  "search", :rbi %>
-  Slugging Percentage<%= check_box  "search", :slg %>
+<div class="span6">
+       Sort By:
+        <ul>
+          <li><%= check_box  "search_sort", :avg %> Batting Average</li>
+          <li><%= check_box  "search_sort", :hr %> HomeRuns</li>
+          <li><%= check_box  "search_sort", :rbi %> RBI</li>
+          <li><%= check_box  "search_sort", :slg %> Slugging Percentage</li>
+        </ul>
+         <br>
+</div>
+        <br>
+        Sort Direction:
+        <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %>
 
-  Sort By:
-  Batting Average<%= check_box  "search_sort", :avg %>
-  HomeRuns<%= check_box  "search_sort", :hr %>
-  RBI<%= check_box  "search_sort", :rbi %>
-  Slugging Percentage<%= check_box  "search_sort", :slg %>
+        <br>
+        <%= submit_tag "Search" %>
+      <% end %>
 
-  Sort Direction:
-  <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %>
+      <%= render :template  => "searches/data_tables", :class => 'btn' %>
+</div>
 
-  <%= submit_tag "Search" %>
-<% end %>
 
-<%= render :template  => "searches/data_tables" %>
