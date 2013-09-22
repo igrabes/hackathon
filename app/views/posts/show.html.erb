@@ -1,15 +1,18 @@
-<%- model_class = Post -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+<div class="container">
+	<%- model_class = Post -%>
+	<div class="page-header">
+	  <h1><%= @post.title %></h1>
+	  <h4 class="author">by <%= @post.user_id %></h4>
+	  <div class="score span1">
+	  	<%= @post.score %>
+	  </div>
+	</div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @post.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
-  <dd><%= @post.body %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:score) %>:</strong></dt>
-  <dd><%= @post.score %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @post.user_id %></dd>
-</dl>
+	<article class="span8">
+	  <%= @post.body %>
+	</article>
+
+	<div class="replies">
+		<!--replies go here-->
+	</div>
+</div>
