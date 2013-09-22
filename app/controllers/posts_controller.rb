@@ -42,11 +42,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post])
+
+    @post = current_user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
-        if params[:search][:save_table]
+        if params[:search][:save_table].to_i == 1
           if params[:search]
             @query_response = Search.query(params)
             @query_keys = @query_response.first.attributes.collect { |player_attribute,player_value| player_attribute }

@@ -2,7 +2,7 @@
   <table class="table">
     <thead>
       <% @query_keys.each do |qk| %>
-        <th><%= qk %></th>
+        <th><%= MLB_MAPPING[qk] %></th>
       <% end %>
     </thead>
     <% @query_response.each do |qr| %>

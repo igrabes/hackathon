@@ -10,7 +10,7 @@
 
 	<article class="span8">
 	  <%= @post.body %>
-    <%= @table.table_html.html_safe %>
+    <%= @table.table_html.html_safe if @table %>
 	</article>
 
 	<div class="replies">
