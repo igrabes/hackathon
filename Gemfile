@@ -15,6 +15,9 @@ gem 'devise'
 
 gem 'sports_data_api', :git => "https://BlaneCordes:Mets2012@github.com/BlaneCordes/sports_data_api.git"
 
+gem 'twitter-bootstrap-rails'
+
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,7 +29,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
   gem "less-rails"
   gem "therubyracer"
 end
