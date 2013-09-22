@@ -1,6 +1,9 @@
 Hackathon::Application.routes.draw do
 
-  root :to => 'posts#index'
+  devise_for :users
+  resources :dashboard
+
+  root :to => 'home#index'
 
   resources :posts
   resources :player_mlbs

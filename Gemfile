@@ -7,6 +7,12 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
+gem 'devise'
+
+# gem 'rake', '~> 0.8.7'
+
+# gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
+
 gem 'sports_data_api', :git => "https://BlaneCordes:Mets2012@github.com/BlaneCordes/sports_data_api.git"
 
 
@@ -34,3 +40,5 @@ end
 
 # To use debugger
 gem 'debugger'
+
+
