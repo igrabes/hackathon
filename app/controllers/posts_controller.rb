@@ -47,7 +47,6 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        debugger
         if params[:search][:save_table].to_i == 1
           if params[:search]
             @query_response = Search.query(params)
