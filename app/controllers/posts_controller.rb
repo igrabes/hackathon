@@ -11,6 +11,9 @@ class PostsController < ApplicationController
     end
   end
 
+  def splash
+  end
+
   def show
     @post = Post.find(params[:id])
     @table = PostData.where(:post_id => @post.id).first

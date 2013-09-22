@@ -11,7 +11,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" <%= link_to image_tag("logo_new.png", :alt => "Couch Commenter"), root_url %></a>
+      <a class="brand" <%= link_to image_tag("logo_new.png", :alt => "Couch Commenter"), posts_path %></a>
         <ul class="container nav">
            <% if user_signed_in? %>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
@@ -19,7 +19,7 @@
           <% else %>
             <li><%= link_to "Create Post", new_post_path %></li><style> li { padding:2px 0px; } </style>
             <li><%= link_to "Sign In", new_user_session_path %></li>
-            <li><%= link_to "Sign Up", new_user_registration_path %></li> 
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <% end %>
         </ul>
     </div>
@@ -29,7 +29,7 @@
 <% flash.each do |name, msg| %>
 <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>
-	
+
 <%= yield %>
 </div>
 
