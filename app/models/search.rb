@@ -11,8 +11,6 @@ class Search < ActiveRecord::Base
 
     search_terms.delete("save_table")
 
-    # sort_by = sort_by.push(params[:search_sort].collect {|k,v| k if v.to_i == 1}.compact!).flatten!
-
     search_sort = params[:search_sort]
     sort_by_query = "#{search_sort} #{sort_direction}"
 

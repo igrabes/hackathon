@@ -39,8 +39,7 @@
   <%= form_tag new_post_path, :method => :get  do %>
     Search: <%= submit_tag "Search", :class => "btn btn-large btn-primary" %><br><br>
     League: <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %><br>
-    Sort By: <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %><br>
-    Filter By: <%= select_tag  :search_sort, options_for_select(MLB_MAPPING.map {|k,v| [v,k]}) %><br>
+    Sort By: <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %> <%= select_tag  :search_sort, options_for_select(MLB_MAPPING.map {|k,v| [v,k]}) %><br>
 
     Select the attributes to be returned:<br>
     <ul class="mlb">
