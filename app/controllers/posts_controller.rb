@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_filter :auth_user, only: [:new, :create, :update, :edit]
+
   def index
     @posts = Post.all.sort_by {|post| post.score}.reverse
 
@@ -10,6 +13,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @table = PostData.where(:post_id => @post.id).first
 
     respond_to do |format|
       format.html # show.html.erb
@@ -17,13 +21,14 @@ class PostsController < ApplicationController
     end
   end
 
+  #TODO user_id is not being saved
   def new
     @post = Post.new
     @leagues = League.all
 
     if params[:search]
       @query_response = Search.query(params)
-      @query_keys = @query_response.first.attributes.collect { |player_attribute,player_value| player_attribute }
+      @query_keys = @query_response.first.attributes.collect { |player_attribute, player_value| player_attribute }
     end
 
     respond_to do |format|
@@ -41,6 +46,15 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        if params[:search][:save_table]
+          if params[:search]
+            @query_response = Search.query(params)
+            @query_keys = @query_response.first.attributes.collect { |player_attribute,player_value| player_attribute }
+          end
+          html = render_to_string :partial => 'searches/data_tables', :local => { :query_reseponse => @query_response}
+
+          PostData.create!(:table_html => html, :post_id => @post.id)
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
@@ -51,6 +65,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    table_params = params["post"]
     @post = Post.find(params[:id])
 
     respond_to do |format|

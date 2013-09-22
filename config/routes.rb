@@ -1,5 +1,8 @@
 Hackathon::Application.routes.draw do
 
+  devise_for :users
+  resources :dashboard
+
   root :to => 'posts#index'
 
   resources :posts
@@ -8,7 +11,9 @@ Hackathon::Application.routes.draw do
 
   get 'posts/:id/upvote' => 'posts#upvote'
   get 'posts/:id/downvote' => 'posts#downvote'
-  get "searches/data_tables"
+  get 'searches/data_tables'
+
+  post 'searches/save_table'
 
 
 end
