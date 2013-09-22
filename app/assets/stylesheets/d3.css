@@ -23,20 +23,21 @@ svg {
   stroke-width: 2px;
 }
 
-.play {
-  stroke: #800;
-}
-
-.pcount {
+.foreground path.L:hover {
   stroke: #080;
 }
 
-.ball {
+.foreground path.R:hover {
   stroke: #008;
 }
 
-.total {
+.foreground path.B:hover {
   stroke: #088;
+}
+
+.foreground path.current-path,
+.foreground path.current-path:hover {
+  stroke: #800;
 }
 
 .brush .extent {

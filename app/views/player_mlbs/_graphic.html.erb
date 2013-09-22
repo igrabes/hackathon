@@ -5,11 +5,11 @@
 <div id="graphic">graphic goes here</div>
 <script>
 var bat_hand = ["R", "L", "B"],
-    traits = ["avg", "pcount", "play", "ball", "total", "finish", "bip"];
+    traits = ["avg", "hr", "rbi", "pcount", "play", "ball", "total", "finish", "bip"];
 
 var m = [80, 160, 200, 160],
     w = 1280 - m[1] - m[3],
-    h = 800 - m[0] - m[2];
+    h = 1000 - m[0] - m[2];
 
 var x = d3.scale.ordinal().domain(traits).rangePoints([0, w]),
     y = {};
@@ -57,13 +57,22 @@ d3.json("http://localhost:3000/player_mlbs.json", function(json) {
       .text(function(d) { return "Hand " + d; });
 
   // Add foreground lines.
+  
   foreground = svg.append("svg:g")
       .attr("class", "foreground")
-    .selectAll("path")
+      .selectAll("path")
       .data(json)
-    .enter().append("svg:path")
+      .enter().append("svg:path")
       .attr("d", path)
-      .attr("class", function(d) { return d.bat_hand; });
+      .attr("class", function(d) { 
+        var currentclass = "";
+        (d.id == <%= @player_mlb.id %>) ? currentclass = " current-path" : currentclass = "";
+        return d.bat_hand + ' ' + d.birthcountry + ' ' + d.id + currentclass; 
+      })
+      .on("click", function(d){
+        console.log(d.first_name+' '+d.last_name);
+        document.location.href = 'http://localhost:3000/player_mlbs/'+d.id;
+      });
 
   // Add a group element for each trait.
   var g = svg.selectAll(".trait")
@@ -81,7 +90,7 @@ d3.json("http://localhost:3000/player_mlbs.json", function(json) {
   g.append("svg:g")
       .attr("class", "axis")
       .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
-    .append("svg:text")
+      .append("svg:text")
       .attr("text-anchor", "middle")
       .attr("y", -9)
       .text(String);
