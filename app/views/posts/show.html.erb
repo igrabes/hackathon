@@ -2,7 +2,7 @@
 	<%- model_class = Post -%>
 	<div class="page-header">
 	  <h1><%= @post.title %></h1>
-	  <h4 class="author">by <%= @post.user_id %></h4>
+	  <h4 class="author">by <%= @post.user.username if @post.user %></h4>
 	  <div class="score span1">
 	  	<%= @post.score %>
 	  </div>

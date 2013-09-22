@@ -17,7 +17,7 @@
             <div class="down"><%= link_to "⬇", controller: "posts", action: "downvote", id: post.id %></div>
           </div></td>
         <td><%= link_to post.title, controller: "posts", action: "show", id: post.id %> </td>
-        <td><%= post.score %> </td>
+        <td><%= post.user.username if post.user %> </td>
       </tr>
     <% end %>
   </tbody>

@@ -14,7 +14,7 @@ class Search < ActiveRecord::Base
     sort_by_query = "#{sort_by[0]} #{sort_direction}"
 
     search_terms.flatten!
-    @query_response = PlayerMlb.where("#{sort_by[0]} is not null").find(:all, :select =>  search_terms, :limit => 10, :order => sort_by_query)
+    @query_response = PlayerMlb.where("#{sort_by[0]} is not null").find(:all, :select =>  search_terms, :limit => 100, :order => sort_by_query)
 
   end
 end

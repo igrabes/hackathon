@@ -12,22 +12,19 @@
     <div class="container">
       <a class="brand" <%= link_to image_tag("logo_new.png", :alt => "Couch Commenter"), root_url %></a>
         <ul class="container nav">
-          <li><%= link_to "Create Post", new_post_path %></li>
+           <% if user_signed_in? %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            <li><%= link_to "Create Post", new_post_path %></li><style> li { padding:2px 0px; } </style>
+          <% else %>
+            <li><%= link_to "Create Post", new_post_path %></li><style> li { padding:2px 0px; } </style>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li> 
+          <% end %>
         </ul>
     </div>
   </div>
 </div>
 <div class="container">
-	
-<div id="user_nav">
-	<% if user_signed_in? %>
-		Signed in as <%= current_user.email %>. Not you?
-		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-	<% else %>
-		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-	<% end %>
-</div>
-
 <% flash.each do |name, msg| %>
 <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>

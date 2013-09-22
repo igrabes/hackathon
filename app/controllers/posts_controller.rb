@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_filter :auth_user, only: [:new, :create, :update, :edit]
+
   def index
     @posts = Post.all.sort_by {|post| post.score}.reverse
 
@@ -17,13 +20,14 @@ class PostsController < ApplicationController
     end
   end
 
+  #TODO user_id is not being saved
   def new
     @post = Post.new
     @leagues = League.all
 
     if params[:search]
       @query_response = Search.query(params)
-      @query_keys = @query_response.first.attributes.collect { |player_attribute,player_value| player_attribute }
+      @query_keys = @query_response.first.attributes.collect { |player_attribute, player_value| player_attribute }
     end
 
     respond_to do |format|

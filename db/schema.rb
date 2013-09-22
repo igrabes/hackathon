@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130922003937) do
+ActiveRecord::Schema.define(:version => 20130922034323) do
 
   create_table "leagues", :force => true do |t|
     t.string   "name"
@@ -89,17 +89,6 @@ ActiveRecord::Schema.define(:version => 20130922003937) do
     t.integer  "play"
     t.integer  "finish"
     t.integer  "complete"
-    t.decimal  "ip_1"
-    t.decimal  "ip_2"
-    t.integer  "bf"
-    t.decimal  "era"
-    t.decimal  "k9"
-    t.decimal  "whip"
-    t.integer  "win"
-    t.integer  "loss"
-    t.integer  "save"
-    t.integer  "qstart"
-    t.integer  "shutout"
   end
 
   create_table "player_mlbs", :force => true do |t|
@@ -209,6 +198,7 @@ ActiveRecord::Schema.define(:version => 20130922003937) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

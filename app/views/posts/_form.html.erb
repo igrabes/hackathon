@@ -16,8 +16,16 @@
 
 <div class="sideform span6">
       <%= form_tag new_post_path, :method => :get  do %>
-        <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %>
+      Search: <%= submit_tag "Search", :class => "btn btn-large btn-primary" %><br><br>
+      League: <%= select_tag "League", options_from_collection_for_select(@leagues, "id", "name") %><br>
+      Sort By: <%= select_tag "Sort Direction", options_for_select([["Highest", 2], ["Lowest", 1]]) %><br>
+      Choose 1 Category to Filter your Data:<br>
+          <li><%= check_box  "search_sort", :avg %>  Batting Average</li>
+          <li><%= check_box  "search_sort", :hr %>   HomeRuns</li>
+          <li><%= check_box  "search_sort", :rbi %>  RBI</li>
+          <li><%= check_box  "search_sort", :slg %>  Slugging Percentage</li><br><br>
 
+      Select the attributes to be returned:<br>
       <ul class="mlb">
           <% PlayerMlb.new.attributes.keys.map(&:to_sym).each do |player_attribute| %>
           <% if MLB_MAPPING[player_attribute].present? %>
@@ -25,27 +33,11 @@
           <% end %>
         <% end %>
       </ul>
-        <br> <br>
-
-<div class="span6">
-       Sort By:
-        <ul>
-          <li><%= check_box  "search_sort", :avg %> Batting Average</li>
-          <li><%= check_box  "search_sort", :hr %> HomeRuns</li>
-          <li><%= check_box  "search_sort", :rbi %> RBI</li>
-          <li><%= check_box  "search_sort", :slg %> Slugging Percentage</li>
-        </ul>
-         <br>
-</div>
-        <br>
-        Sort Direction:
-        <%= select_tag :sort_direction, options_for_select([["Highest", 2], ["Lowest", 1]]) %>
-
-        <br>
-        <%= submit_tag "Search" %>
       <% end %>
+    </div>
 
-      <%= render :template  => "searches/data_tables", :class => 'btn' %>
-</div>
+<table class="table table-striped">
+      <%= render :template  => "searches/data_tables" %>
+</table>
 
 
