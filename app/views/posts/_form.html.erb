@@ -3,12 +3,21 @@
     <div class="control-group">
         <%= f.text_field :title, :class => 'text_field', :placeholder => "Title" %>
     </div>
+
     <div class="control-group">
-      <%= f.label :body, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_area :body, :class => 'text_area' %>
+      <%= f.text_area :body, :class => 'text_area', :placeholder => "Post Body" %>
+    </div>
+    <ul style="list-style-type:none;">
+      <li><%= check_box "search", :save_table %>   Save Table</li>
+    </ul>
+
+    <div class="control-group">
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-large btn-primary' %>
       </div>
     </div>
+
+
     <% if params[:search] %>
       <% params[:search].each do |key,value| %>
         <%= hidden_field_tag "search[#{key}]",value %>
@@ -24,18 +33,7 @@
     <%= hidden_field_tag "sort_direction", params[:sort_direction] %>
 
 
-    <div class="control-group">
-      Save Table
-      <div class="controls">
-        <%= check_box "search", :save_table %>
-      </div>
-    </div>
 
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  posts_path, :class => 'btn' %>
-    </div>
   <% end %>
 </div>
 
@@ -64,7 +62,4 @@
   <% end %>
 </div>
 
-      <%= render :template  => "searches/data_tables" %>
-
-
-      <%= render :partial  => "searches/data_tables", :locals => {:query_response => @query_response} %>
+<%= render :partial  => "searches/data_tables", :locals => {:query_response => @query_response} %>

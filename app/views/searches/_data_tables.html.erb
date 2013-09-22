@@ -1,8 +1,8 @@
 <% if @query_response %>
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <% @query_keys.each do |qk| %>
-        <th><%= MLB_MAPPING[qk] %></th>
+        <th><%= MLB_MAPPING[qk.to_sym] %></th>
       <% end %>
     </thead>
     <% @query_response.each do |qr| %>
