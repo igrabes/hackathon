@@ -37,7 +37,8 @@ textarea { resize:both; }
 @colorGreen: #6bc700;
 @colorYellow: #7b6114;
 @colorPale: #f6f6f6;
-@border: @colorGreen 2px solid;
+@colorBrown: #7b6114;
+@border: @colorGreen 3px solid;
 
 
 #logo {
@@ -52,16 +53,21 @@ textarea { resize:both; }
 	ul.nav{
 		display: block;
 		float: right;
+		position: absolute;
+		bottom: -1px;
+		right: 0;
 
 		li{
 			display: block;
-			float: left;
+			float: right;
 			border: @border;
 			border-bottom: 0px none;
+			background: #fff;
 		}
 
 		a{
 			font: 14px/0.8em "fontNormal", verdana, arial, helvetica, sans-serif;
+			color: @colorBrown;
 		}
 	}
 }
