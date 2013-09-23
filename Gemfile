@@ -13,7 +13,6 @@ gem 'devise'
 
 # gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 
-gem 'sports_data_api', :git => "https://BlaneCordes:Mets2012@github.com/BlaneCordes/sports_data_api.git"
 
 gem 'twitter-bootstrap-rails'
 gem "less-rails"
